@@ -1,8 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../pages/Home.vue'
+import CoinSearch from '@/pages/CoinSearch.vue'
 
 const routes = [
-    { path: '/Home', name: 'Home', component: Home },   
+    { path: '/home', name: 'Home', component: Home },   
+    { path: '/coinsearch', name: 'CoinSearch', component: CoinSearch },   
+    
 ]
   
   const router = createRouter({
