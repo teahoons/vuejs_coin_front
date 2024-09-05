@@ -6,17 +6,17 @@
 
     <div v-if="coinInfo">
       <h2>{{ coinName }} ({{ coinInfo.market }})</h2>
-      <p>시가: {{ coinInfo.opening_price.toLocaleString()+"원" }}</p>
-      <p>고가: {{ coinInfo.high_price.toLocaleString()+"원" }}</p>
-      <p>저가: {{ coinInfo.low_price.toLocaleString()+"원" }}</p>
-      <p>종가(현재가): {{ coinInfo.trade_price.toLocaleString()+"원" }}</p>
+      <p>시가: {{ coinInfo.opening_price.toLocaleString() + "원" }}</p>
+      <p>고가: {{ coinInfo.high_price.toLocaleString() + "원" }}</p>
+      <p>저가: {{ coinInfo.low_price.toLocaleString() + "원" }}</p>
+      <p>종가(현재가): {{ coinInfo.trade_price.toLocaleString() + "원" }}</p>
       <p>변화: {{ getChangeText(coinInfo.change) }}</p>
-      <p>변화액: {{ coinInfo.signed_change_price.toLocaleString()+"원" }}</p>
-      <p>변화율: {{ (coinInfo.signed_change_rate*100)+"%" }}</p>
+      <p>변화액: {{ coinInfo.signed_change_price.toLocaleString() + "원" }}</p>
+      <p>변화율: {{ (coinInfo.signed_change_rate * 100) + "%" }}</p>
       <p>최근 거래량: {{ coinInfo.trade_volume.toLocaleString() }}</p>
       <p>24시간 누적 거래량: {{ coinInfo.acc_trade_volume_24h.toLocaleString() }}</p>
-      <p>52주 신고가: {{ coinInfo.highest_52_week_price.toLocaleString()+"원" }}</p>
-      <p>52주 신저가: {{ coinInfo.lowest_52_week_price.toLocaleString()+"원" }}</p>
+      <p>52주 신고가: {{ coinInfo.highest_52_week_price.toLocaleString() + "원" }}</p>
+      <p>52주 신저가: {{ coinInfo.lowest_52_week_price.toLocaleString() + "원" }}</p>
     </div>
 
     <div v-else-if="error">
@@ -36,6 +36,16 @@ export default {
       error: null,
     };
   },
+  async created() {
+    // URL 파라미터에서 코인 이름 가져오기
+    const urlParams = new URLSearchParams(window.location.search);
+    const coinParam = urlParams.get('coin');
+
+    if (coinParam) {
+      this.coinName = coinParam;
+      await this.searchCoin(); // 페이지가 로드되면 코인 검색 실행
+    }
+  },
   methods: {
     async searchCoin() {
       try {
@@ -44,7 +54,7 @@ export default {
         const coinInfoResponse = await axios.get(`http://localhost:8081/api/coin/market/${this.coinName}`);
         console.log('Coin info response:', coinInfoResponse.data); // 응답 데이터 출력
 
-        if (coinInfoResponse.data) {
+        if (coinInfoResponse.data && coinInfoResponse.data.length > 0) {
           // 첫 번째 요소만 사용
           this.coinInfo = coinInfoResponse.data[0];
           this.error = null; // 에러 메시지 초기화

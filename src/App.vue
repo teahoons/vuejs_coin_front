@@ -9,9 +9,9 @@
         nav
       >
         <v-list-item @click="$router.push('/home')" prepend-icon="mdi-view-dashboard" title="Home" value="home"></v-list-item>
-        <v-list-item @click="$router.push('/coinsearch')" prepend-icon="mdi-forum" title="CoinSearch" value="about"></v-list-item>
-        <v-list-item @click="$router.push('/listsearch')" prepend-icon="mdi-forum" title="CoinList" value="about"></v-list-item>
-        <v-list-item @click="$router.push('/warning')" prepend-icon="mdi-forum" title="Warning" value="about"></v-list-item>
+        <v-list-item @click="$router.push('/coinsearch')" prepend-icon="mdi-forum" title="CoinSearch"></v-list-item>
+        <v-list-item @click="$router.push('/listsearch')" prepend-icon="mdi-clock" title="CoinList"></v-list-item>
+        <v-list-item @click="$router.push('/warning')" prepend-icon="mdi-school" title="Warning" ></v-list-item>
       </v-list>
     </v-navigation-drawer>
 
