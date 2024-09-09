@@ -105,41 +105,77 @@ export default {
 };
 </script>
 
-<style>
-* {
-  padding: 0;
-  margin: 0;
+<style scoped>
+/* 컨테이너 스타일 */
+div {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
 }
+
+/* 입력 필드 스타일 */
 .search-input {
-  display: block;
-  padding: 4px 8px;
-  margin: 10px auto;
-  width: 320px;
-  font-size: 16px;
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
   outline: none;
+  transition: border-color 0.3s ease;
 }
 
-.group-list {
-  margin: 0 auto;
-  width: 360px;
+.search-input:focus {
+  border-color: #007bff;
 }
 
-.group-list li {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50px;
-  list-style-type: none;
-}
-
-.group-list span {
-  display: block;
-  width: 33%;
-  text-align: center;
-}
-
+/* 리스트 헤더 스타일 */
 .group-list-header {
-  font-weight: 700;
-  border-bottom: 1px solid #bdbdbd;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* 각 열을 같은 비율로 나눔 */
+  padding: 10px 0;
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  text-align: left;
+}
+
+/* 리스트 아이템 스타일 */
+.group-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* 각 열을 같은 비율로 나눔 */
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.group-item:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+/* 클릭 가능한 항목 스타일 */
+.clickable {
+  color: #007bff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.clickable:hover {
+  color: #0056b3;
+}
+
+/* 검색 결과가 없을 때의 메시지 스타일 */
+div > div {
+  color: #d9534f;
+  font-size: 1.2rem;
+  text-align: center;
+  margin-top: 20px;
 }
 </style>

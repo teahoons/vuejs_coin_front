@@ -1,7 +1,7 @@
 <template>
   <div class="coin-search">
     <h1>Coin Search</h1>
-    <input v-model="coinName" placeholder="한글 코인 이름을 입력하세요" @keyup.enter="searchCoin" />
+    <input v-model="coinName" placeholder="코인 이름을 입력하세요" @keyup.enter="searchCoin" />
     <button @click="searchCoin">검색</button>
 
     <div v-if="coinInfo">
@@ -91,24 +91,93 @@ export default {
 <style scoped>
 .coin-search {
   max-width: 600px;
-  margin: 0 auto;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
   text-align: center;
+  font-family: 'Arial', sans-serif;
 }
 
-input {
+.coin-search h1 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.search-box {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.search-box input {
+  width: 70%;
   padding: 10px;
-  margin: 10px 0;
-  font-size: 16px;
-  width: 80%;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease;
 }
 
-button {
+.search-box input:focus {
+  border-color: #007bff;
+}
+
+.search-box button {
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
+  margin-left: 10px;
+  transition: background-color 0.3s ease;
 }
 
-h2 {
+.search-box button:hover {
+  background-color: #0056b3;
+}
+
+.coin-info {
+  text-align: left;
   margin-top: 20px;
 }
+
+.coin-info h2 {
+  font-size: 1.5rem;
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+.coin-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.coin-info ul li {
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.coin-info ul li span {
+  font-weight: bold;
+  color: #000;
+}
+
+.coin-info p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+p {
+  font-size: 1rem;
+  color: #d9534f;
+}
 </style>
+
